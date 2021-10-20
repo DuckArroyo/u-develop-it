@@ -7,11 +7,59 @@ Continue reading 12.1.4
 command line is not accepting
 mysql --version
 mysql -u root -p
-/usr/local/mysql-8.0.26-macos11-arm64/support-files
 
-Working on 12.1.6 but cannot complete the sql portions.
+Working on 12.1.
 
-initiated npm 12.2.3
-Installed the npm packages 12.2.3
-Installed and setup Testing using Jest 12.2.3 - testes passed.
-Created Server 12.2.3 - server is running
+SQL Commands
+
+- Initiates sql and asks for passcode
+  mysql -u root -p
+
+- Crerates "election" database
+  mysql> CREATE DATABASE election;
+
+- Selects "election" to be used
+  USE election;
+
+- Creates "candidates" table
+  CREATE TABLE candidates (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  industry_connected BOOLEAN NOT NULL
+  );
+
+- Displays "candidates" table without actual values
+  DESCRIBE candidates;
+
+- Adds values to the candidates table
+  INSERT INTO candidates (first_name, last_name, industry_connected)
+  VALUES ('Ronald', 'Firbank', 1);
+
+- displays _(all) from candidates.
+  SELECT _ FROM candidates;
+
+- Displays data from candidates with the first name and last name values
+  SELECT first_name, last_name FROM candidates;
+
+- queries to display candidates that are industry connected where industry connected is a filter. 1 is the bolean for true.
+  SELECT first_name, industry_connected
+  FROM candidates
+  WHERE industry_connected = 1;
+
+- Queries to display with id
+  SELECT first_name, last_name, industry_connected
+  FROM candidates
+  WHERE id = 5;
+
+- within a database SHOW provides a list of tables.
+  SHOW tables;
+
+* Update a row, where selects the row to update and SET updates the info
+  UPDATE candidates
+  SET industry_connected = 1
+  WHERE id = 3;
+
+* Delete - self explanatory
+  DELETE FROM candidates
+  WHERE first_name = "Montague";
