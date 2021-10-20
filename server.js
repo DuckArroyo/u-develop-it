@@ -20,10 +20,38 @@ const db = mysql.createConnection(
   console.log("Connected to the election database.")
 );
 
-db.query(`SELECT * FROM candidates`, (err, rows) => {
-  //!Dont delete this console log. Console logs here post to the CLI. The console log is not funtional, I dont want to forget it's use.
-  console.log(rows);
+//GET full candidates table
+// db.query(`SELECT * FROM candidates`, (err, rows) => {
+//   //!Dont delete this console log. Console logs here post to the CLI. The console log is not funtional, I dont want to forget it's use.
+//   console.log(rows);
+// });
+
+//GET a single candidate
+// db.query(`SELECT * FROM candidates WHERE id = 1`, (err, row) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(row);
+// });
+
+// Create a candidate
+const sql = `INSERT INTO candidates (id, first_name, last_name, industry_connected) VALUES (?,?,?,?)`;
+const params = [1, "Ronald", "Firbank", 1];
+
+db.query(sql, params, (err, result) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(result);
 });
+
+//Delete a candidate
+// db.query(`DELETE FROM candidates WHERE id = ?`, 1, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log(result);
+// });
 
 app.get("/", (req, res) => {
   res.json({
