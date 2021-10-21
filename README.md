@@ -2,8 +2,8 @@
 
 Coding bootcamp week 12/24. Voting app
 
-Continue reading 12.
-Working on 12.1.
+Continue reading 12.4.3
+Working on 12.4.3
 
 mysql --version
 mysql -u root -p
