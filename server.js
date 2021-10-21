@@ -8,6 +8,7 @@ const app = express();
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 // Connect to database
 const db = mysql.createConnection(
   {
@@ -96,6 +97,11 @@ app.post("/api/candidate", ({ body }, res) => {
     }
     res.json({ message: "Success", data: body });
   });
+});
+
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+  res.status(404).end();
 });
 
 app.listen(PORT, () => {

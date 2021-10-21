@@ -19,6 +19,9 @@ SQL Commands
 - Selects "election" to be used
   USE election;
 
+  - Execute script
+    SOURCE folder name/file name with extension
+
 - Creates "candidates" table
   CREATE TABLE candidates (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
