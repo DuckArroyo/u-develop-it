@@ -64,3 +64,12 @@ SQL Commands
 * Delete - self explanatory
   DELETE FROM candidates
   WHERE first_name = "Montague";
+
+* Joins tables
+  SELECT \* FROM candidates
+  LEFT JOIN parties ON candidates.party_id = parties.id;
+
+* Updated code from above - this joins the tables and names the new column party_name.
+  SELECT candidates.\*, parties.name AS party_name
+  FROM candidates
+  LEFT JOIN parties ON candidates.party_id = parties.id;
