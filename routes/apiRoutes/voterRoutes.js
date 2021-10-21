@@ -56,7 +56,7 @@ router.post("/voter", ({ body }, res) => {
   });
 });
 
-//UPDATE a voter's info
+//UPDATE a voter's email
 router.put("/voter/:id", (req, res) => {
   // Data validation
   const errors = inputCheck(req.body, "email");
@@ -80,6 +80,27 @@ router.put("/voter/:id", (req, res) => {
         message: "success",
         data: req.body,
         changes: result.affectedRows,
+      });
+    }
+  });
+});
+
+//DELETE a voter
+router.delete("/voter/:id", (req, res) => {
+  const sql = `DELETE FROM voters WHERE id = ?`;
+
+  db.query(sql, req.params.id, (err, result) => {
+    if (err) {
+      res.status(400).json({ error: res.message });
+    } else if (!result.affectedRows) {
+      res.json({
+        message: "Voter not found",
+      });
+    } else {
+      res.json({
+        message: "deleted",
+        changes: result.affectedRows,
+        id: req.params.id,
       });
     }
   });
